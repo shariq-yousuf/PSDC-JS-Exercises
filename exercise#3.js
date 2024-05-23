@@ -1,18 +1,14 @@
-const n = 37
+const n = 8
 let isItPrimeNumber = ""
 
 
-for (let i = 2; i < 10; i++) {
-    if (i === n) {
-        continue
-    } else {
-        if (n % n === 0 && n % i !== 0) {
+for (let i = 2; i < n; i++) {
+        if (n % i !== 0) {
             isItPrimeNumber = true
         } else {
             isItPrimeNumber = false
             break
         }
-    }
 }
 
 if (isItPrimeNumber) {
