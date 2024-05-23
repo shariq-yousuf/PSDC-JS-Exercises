@@ -7,17 +7,20 @@
 // Your program should prnt "Supercalifragilisticexpialidocious" as it is the longest
 // word in the string.
 
-const sentences = ["The quick brown fox jumps over the lazy dog", "A journey of a thousand miles begins with a single step", "Supercalifragilisticexpialidocious is a very long word"]
-let longestWord = ""
+const sentences = [
+  "The quick brown fox jumps over the lazy dog",
+  "A journey of a thousand miles begins with a single step",
+  "Supercalifragilisticexpialidocious is a very long word",
+];
+let longestWord = "";
 
 for (let i = 0; i < sentences.length; i++) {
+  let strToArr = sentences[i].split(" ");
 
-    let strToArr = sentences[i].split(" ")
-    
-    for (let i = 0; i < strToArr.length; i++) {
-        if (strToArr[i].length >= longestWord.length) {
-            longestWord = strToArr[i]
-        }
+  for (let i = 0; i < strToArr.length; i++) {
+    if (strToArr[i].length >= longestWord.length) {
+      longestWord = strToArr[i];
     }
-    console.log(`longestWord of sentence #${i + 1}:`, longestWord)
+  }
+  console.log(`longestWord of sentence #${i + 1}:`, longestWord);
 }
