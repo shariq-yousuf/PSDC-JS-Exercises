@@ -27,8 +27,7 @@ console.log("smallestNumber of positive array:", smallestNumber);
 
 // smallest number of negative numbers array
 numbers = [-5, -10, -16, -3, -11];
-
-smallestNumber = largestNumber;
+smallestNumber = 0;
 
 for (let i = 0; i < numbers.length; i++) {
   if (numbers[i] < smallestNumber) {
@@ -36,3 +35,13 @@ for (let i = 0; i < numbers.length; i++) {
   }
 }
 console.log("smallestNumber of negative array:", smallestNumber);
+
+// largest number of negative numbers array
+largestNumber = smallestNumber;
+
+for (let i = 0; i < numbers.length; i++) {
+  if (numbers[i] > largestNumber) {
+    largestNumber = numbers[i];
+  }
+}
+console.log("largestNumber:", largestNumber);
