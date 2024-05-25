@@ -38,13 +38,17 @@ library.push({
 });
 
 // updating publish year for new book
-library[2].yearPublished = 2023;
+library[3].yearPublished = 2023;
 
-delete library[3]
-console.log(library)
-
-// searching for the new book
+// searching for new book
 for (let i = 0; i < library.length; i++) {
   newBook = library[i];
 }
-// console.log(newBook);
+
+// logging out new book properties
+console.log("New Book:", newBook);
+
+// removing first book from library
+library.splice(0, 1)
+
+console.log(`Removed 1st book (named: 'HTML Basics').`, library)
