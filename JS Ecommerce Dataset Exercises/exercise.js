@@ -162,31 +162,31 @@ const products = [
   },
 ];
 const products2 = [
-    {
-      id: 1,
-      name: "Wireless Mouse",
-      category: "Electronics",
-      price: 28.95,
-      stock: 34,
-      sales: 150,
-    },
-    {
-      id: 2,
-      name: "Bluetooth Headphones",
-      category: "Electronics",
-      price: 95.5,
-      stock: 0,
-      sales: 200,
-    },
-    {
-      id: 3,
-      name: "Laptop",
-      category: "Electronics",
-      price: 910.75,
-      stock: 7,
-      sales: 50,
-    }
-]
+  {
+    id: 1,
+    name: "Wireless Mouse",
+    category: "Electronics",
+    price: 28.95,
+    stock: 34,
+    sales: 150,
+  },
+  {
+    id: 2,
+    name: "Bluetooth Headphones",
+    category: "Electronics",
+    price: 95.5,
+    stock: 0,
+    sales: 200,
+  },
+  {
+    id: 3,
+    name: "Laptop",
+    category: "Electronics",
+    price: 910.75,
+    stock: 7,
+    sales: 50,
+  },
+];
 // Questions
 // Note: Create a function for each question, and return an array in the answer
 // wherever necessary.
@@ -219,16 +219,23 @@ function findOutOfStockProducts(products) {
       outOfStockProducts.push(products[i]);
     }
   }
-  return outOfStockProducts
+  return outOfStockProducts;
 }
-console.log("Out of stock products: ", findOutOfStockProducts(products2))
+console.log("Out of stock products: ", findOutOfStockProducts(products2));
 
 // 3. Calculate the Total Revenue
 // Write a function to calculate the total revenue from all products. The function
 // will take one parameter products and return the total revenue as a number.
-// function calculateTotalRevenue(products) {
-// // Your code here
-// }
+function calculateTotalRevenue(products) {
+  let totalRevenue = 0;
+
+  for (let i = 0; i < products.length; i++) {
+    totalRevenue += products[i].price * products[i].sales;
+  }
+  return totalRevenue;
+}
+console.log("Total Revenue: ", calculateTotalRevenue(products))
+
 // 4. Apply Sale to Less-Selling Products
 // Write a function to apply a sale to less-selling products. The function will
 // take two parameters: products and percentage (the discount percentage you
@@ -236,14 +243,14 @@ console.log("Out of stock products: ", findOutOfStockProducts(products2))
 // updated prices.
 // function applySaleToLessSellingProducts(products, percentag
 // e) {
-// // Your code here
+//
 // }
 // 5. Find Products in a Specific Category
 // Write a function to find products in a specific category. The function will take
 // two parameters: products and category (a string representing the category to
 // search for). The function should return an array of products in that category.
 // function findProductsInCategory(products, category) {
-// // Your code here
+//
 // }
 // 6. Find Products with Stock Less Than a Specific Quantity
 // Write a function to find products with stock less than a specific quantity. The
@@ -251,7 +258,7 @@ console.log("Out of stock products: ", findOutOfStockProducts(products2))
 // threshold). The function should return an array of products with stock less
 // than the given quantity.
 // function findProductsWithLowStock(products, quantity) {
-// // Your code here
+//
 // PSDC Ecommerce Dataset Exercises 7
 // }
 // 7. Calculate Total Stock Value
@@ -259,7 +266,7 @@ console.log("Out of stock products: ", findOutOfStockProducts(products2))
 // product). The function will take one parameter products and return the total
 // stock value as a number.
 // function calculateTotalStockValue(products) {
-// // Your code here
+//
 // }
 // 8. Get Products with High Sales but Low Stock
 // Write a function to get products with high sales but low stock. The function
@@ -268,7 +275,7 @@ console.log("Out of stock products: ", findOutOfStockProducts(products2))
 // should return an array of products that meet the criteria.
 // function getHighSalesLowStockProducts(products, salesThresh
 // old, stockThreshold) {
-// // Your code here
+//
 // }
 // 9. Find the Most Expensive Product in Each Category
 // Write a function to find the most expensive product in each category. The
@@ -276,7 +283,7 @@ console.log("Out of stock products: ", findOutOfStockProducts(products2))
 // key is a category and the value is the most expensive product in that
 // category.
 // function findMostExpensiveProductInEachCategory(products) {
-// // Your code here
+//
 // }
 // 10. Group Products by Category
 // Write a function to group products by their category. The function will take
@@ -284,12 +291,12 @@ console.log("Out of stock products: ", findOutOfStockProducts(products2))
 // PSDC Ecommerce Dataset Exercises 8
 // and the value is an array of products in that category.
 // function groupProductsByCategory(products) {
-// // Your code here
+//
 // }
 // 11. Get Top N Selling Products
 // Write a function to get the top N selling products. The function will take two
 // parameters: products and n (the number of top selling products to return).
 // The function should return an array of the top N selling products.
 // function getTopNSellingProducts(products, n) {
-// // Your code here
+//
 // }
