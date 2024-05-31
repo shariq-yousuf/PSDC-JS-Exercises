@@ -221,7 +221,7 @@ function findOutOfStockProducts(products) {
   }
   return outOfStockProducts;
 }
-console.log("Out of stock products: ", findOutOfStockProducts(products2));
+console.log("Out of stock products: ", findOutOfStockProducts(products));
 
 // 3. Calculate the Total Revenue
 // Write a function to calculate the total revenue from all products. The function
@@ -236,15 +236,24 @@ function calculateTotalRevenue(products) {
 }
 console.log("Total Revenue: ", calculateTotalRevenue(products))
 
-// 4. Apply Sale to Less-Selling Products
+// 4. Apply Sale to Less-Selling Products (products that have <50 sales)
 // Write a function to apply a sale to less-selling products. The function will
 // take two parameters: products and percentage (the discount percentage you
 // want to apply). The function should return an array of products with the
 // updated prices.
-// function applySaleToLessSellingProducts(products, percentag
-// e) {
-//
-// }
+function applySaleToLessSellingProducts(products, percentage) {
+    const lessSales = 50
+    let lessSellingProducts = []
+
+    for (let i = 0; i < products.length; i++) {
+        if (products[i].sales < lessSales) {
+            products[i].price = Number((products[i].price - (products[i].price * percentage)).toFixed(2))
+            lessSellingProducts.push(products[i])
+        }
+    }
+    return lessSellingProducts
+}
+console.log("20% sale on less-selling products: ", applySaleToLessSellingProducts(products, 0.2))
 // 5. Find Products in a Specific Category
 // Write a function to find products in a specific category. The function will take
 // two parameters: products and category (a string representing the category to
