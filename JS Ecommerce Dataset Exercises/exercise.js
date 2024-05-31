@@ -161,7 +161,32 @@ const products = [
     sales: 75,
   },
 ];
-
+const products2 = [
+    {
+      id: 1,
+      name: "Wireless Mouse",
+      category: "Electronics",
+      price: 28.95,
+      stock: 34,
+      sales: 150,
+    },
+    {
+      id: 2,
+      name: "Bluetooth Headphones",
+      category: "Electronics",
+      price: 95.5,
+      stock: 0,
+      sales: 200,
+    },
+    {
+      id: 3,
+      name: "Laptop",
+      category: "Electronics",
+      price: 910.75,
+      stock: 7,
+      sales: 50,
+    }
+]
 // Questions
 // Note: Create a function for each question, and return an array in the answer
 // wherever necessary.
@@ -169,27 +194,35 @@ const products = [
 // 1. Find the Best Selling Product
 // Write a function which returns the object of the best selling product.
 function findBestSellingProduct() {
-  let bestSales = 0
-  let bestSellingProduct 
+  let bestSales = 0;
+  let bestSellingProduct;
 
   for (let i = 0; i < products.length; i++) {
     if (bestSales < products[i].sales) {
-        bestSales = products[i].sales
-        bestSellingProduct = products[i]
+      bestSales = products[i].sales;
+      bestSellingProduct = products[i];
     }
   }
 
-  return bestSellingProduct
+  return bestSellingProduct;
 }
-console.log("Best Selling Product: ", findBestSellingProduct())
+console.log("Best Selling Product: ", findBestSellingProduct());
 
 // 2. Find the Out of Stock Products (products that have 0 stock)
 // Function will take one parameter products and return an array of out-of-stock
 // products.
-// function findOutOfStockProducts(products) {
-// // Your code here
-// }
-// PSDC Ecommerce Dataset Exercises 6
+function findOutOfStockProducts(products) {
+  let outOfStockProducts = [];
+
+  for (let i = 0; i < products.length; i++) {
+    if (products[i].stock === 0) {
+      outOfStockProducts.push(products[i]);
+    }
+  }
+  return outOfStockProducts
+}
+console.log("Out of stock products: ", findOutOfStockProducts(products2))
+
 // 3. Calculate the Total Revenue
 // Write a function to calculate the total revenue from all products. The function
 // will take one parameter products and return the total revenue as a number.
