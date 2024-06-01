@@ -311,18 +311,48 @@ function getHighSalesLowStockProducts(
     }
   }
 
-  return productsWithHighSalesLowStock
+  return productsWithHighSalesLowStock;
 }
-console.log(`Products with high sales and low stock: `, getHighSalesLowStockProducts(products, 80, 10));
+console.log(
+  `Products with high sales and low stock: `,
+  getHighSalesLowStockProducts(products, 80, 10)
+);
 
 // 9. Find the Most Expensive Product in Each Category
 // Write a function to find the most expensive product in each category. The
 // function will take one parameter products and return an object where each
 // key is a category and the value is the most expensive product in that
 // category.
-// function findMostExpensiveProductInEachCategory(products) {
-//
-// }
+const categories = [];
+for (let i = 0; i < products.length; i++) {
+  if (!categories.includes(products[i].category)) {
+    categories.push(products[i].category);
+  }
+}
+
+function findMostExpensiveProductInEachCategory(products) {
+  const expensiveProductInCategory = {};
+  let expensive = 0;
+
+  for (let j = 0; j < categories.length; j++) {
+    const oneCatProducts = findProductsInCategory(products, categories[j]);
+
+    for (let i = 0; i < oneCatProducts.length; i++) {
+      if (expensive < oneCatProducts[i].price) {
+        expensive = oneCatProducts[i].price;
+        expensiveProductInCategory[categories[j]] = oneCatProducts[i];
+      }
+    }
+    expensive = 0;
+  }
+
+  return expensiveProductInCategory;
+}
+console.log(
+  "Most expensive product in each category: ",
+  findMostExpensiveProductInEachCategory(products)
+);
+
 // 10. Group Products by Category
 // Write a function to group products by their category. The function will take
 // one parameter products and return an object where each key is a category
