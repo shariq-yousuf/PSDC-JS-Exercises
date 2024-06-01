@@ -279,9 +279,17 @@ console.log(
 // Write a function to calculate the total stock value (total stock * price for each
 // product). The function will take one parameter products and return the total
 // stock value as a number.
-// function calculateTotalStockValue(products) {
-//
-// }
+function calculateTotalStockValue(products) {
+  let totalStockValue = 0
+
+  for (let i = 0; i < products.length; i++) {
+    totalStockValue += products[i].stock * products[i].price
+  }
+
+  return totalStockValue
+}
+console.log("Total stock value: ", calculateTotalStockValue(products))
+
 // 8. Get Products with High Sales but Low Stock
 // Write a function to get products with high sales but low stock. The function
 // will take three parameters: products , salesThreshold (minimum sales to consider
