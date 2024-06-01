@@ -240,7 +240,7 @@ console.log(
 // two parameters: products and category (a string representing the category to
 // search for). The function should return an array of products in that category.
 function findProductsInCategory(products, category) {
-  productsInCat = [];
+  const productsInCat = [];
 
   for (let i = 0; i < products.length; i++) {
     if (category === products[i].category) {
@@ -249,17 +249,32 @@ function findProductsInCategory(products, category) {
   }
   return productsInCat;
 }
-console.log(findProductsInCategory(products, "Electronics"));
+console.log(
+  "Products in specific category: ",
+  findProductsInCategory(products, "Electronics")
+);
 
 // 6. Find Products with Stock Less Than a Specific Quantity
 // Write a function to find products with stock less than a specific quantity. The
 // function will take two parameters: products and quantity (the stock quantity
 // threshold). The function should return an array of products with stock less
 // than the given quantity.
-// function findProductsWithLowStock(products, quantity) {
-//
-// PSDC Ecommerce Dataset Exercises 7
-// }
+function findProductsWithLowStock(products, quantity) {
+  const productsWithLowStock = [];
+
+  for (let i = 0; i < products.length; i++) {
+    if (products[i].stock < quantity) {
+      productsWithLowStock.push(products[i]);
+    }
+  }
+
+  return productsWithLowStock;
+}
+console.log(
+  `Products with low stock: `,
+  findProductsWithLowStock(products, 10)
+);
+
 // 7. Calculate Total Stock Value
 // Write a function to calculate the total stock value (total stock * price for each
 // product). The function will take one parameter products and return the total
