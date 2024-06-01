@@ -356,11 +356,18 @@ console.log(
 // 10. Group Products by Category
 // Write a function to group products by their category. The function will take
 // one parameter products and return an object where each key is a category
-// PSDC Ecommerce Dataset Exercises 8
 // and the value is an array of products in that category.
-// function groupProductsByCategory(products) {
-//
-// }
+function groupProductsByCategory(products) {
+  const groupProducts = {}
+
+  for (let i = 0; i < categories.length; i++) {
+    groupProducts[categories[i]] = findProductsInCategory(products, categories[i])
+  }
+
+  return groupProducts
+}
+console.log("Group products by category: ", groupProductsByCategory(products))
+
 // 11. Get Top N Selling Products
 // Write a function to get the top N selling products. The function will take two
 // parameters: products and n (the number of top selling products to return).
