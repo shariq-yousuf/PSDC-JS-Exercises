@@ -280,25 +280,41 @@ console.log(
 // product). The function will take one parameter products and return the total
 // stock value as a number.
 function calculateTotalStockValue(products) {
-  let totalStockValue = 0
+  let totalStockValue = 0;
 
   for (let i = 0; i < products.length; i++) {
-    totalStockValue += products[i].stock * products[i].price
+    totalStockValue += products[i].stock * products[i].price;
   }
 
-  return totalStockValue
+  return totalStockValue;
 }
-console.log("Total stock value: ", calculateTotalStockValue(products))
+console.log("Total stock value: ", calculateTotalStockValue(products));
 
 // 8. Get Products with High Sales but Low Stock
 // Write a function to get products with high sales but low stock. The function
 // will take three parameters: products , salesThreshold (minimum sales to consider
 // high), and stockThreshold (maximum stock to consider low). The function
 // should return an array of products that meet the criteria.
-// function getHighSalesLowStockProducts(products, salesThresh
-// old, stockThreshold) {
-//
-// }
+function getHighSalesLowStockProducts(
+  products,
+  salesThreshold,
+  stockThreshold
+) {
+  const productsWithHighSalesLowStock = [];
+
+  for (let i = 0; i < products.length; i++) {
+    if (
+      products[i].sales > salesThreshold &&
+      products[i].stock < stockThreshold
+    ) {
+      productsWithHighSalesLowStock.push(products[i]);
+    }
+  }
+
+  return productsWithHighSalesLowStock
+}
+console.log(`Products with high sales and low stock: `, getHighSalesLowStockProducts(products, 80, 10));
+
 // 9. Find the Most Expensive Product in Each Category
 // Write a function to find the most expensive product in each category. The
 // function will take one parameter products and return an object where each
