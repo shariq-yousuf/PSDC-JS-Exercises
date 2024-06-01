@@ -161,32 +161,7 @@ const products = [
     sales: 75,
   },
 ];
-const products2 = [
-  {
-    id: 1,
-    name: "Wireless Mouse",
-    category: "Electronics",
-    price: 28.95,
-    stock: 34,
-    sales: 150,
-  },
-  {
-    id: 2,
-    name: "Bluetooth Headphones",
-    category: "Electronics",
-    price: 95.5,
-    stock: 0,
-    sales: 200,
-  },
-  {
-    id: 3,
-    name: "Laptop",
-    category: "Electronics",
-    price: 910.75,
-    stock: 7,
-    sales: 50,
-  },
-];
+
 // Questions
 // Note: Create a function for each question, and return an array in the answer
 // wherever necessary.
@@ -234,7 +209,7 @@ function calculateTotalRevenue(products) {
   }
   return totalRevenue;
 }
-console.log("Total Revenue: ", calculateTotalRevenue(products))
+console.log("Total Revenue: ", calculateTotalRevenue(products));
 
 // 4. Apply Sale to Less-Selling Products (products that have <50 sales)
 // Write a function to apply a sale to less-selling products. The function will
@@ -242,25 +217,40 @@ console.log("Total Revenue: ", calculateTotalRevenue(products))
 // want to apply). The function should return an array of products with the
 // updated prices.
 function applySaleToLessSellingProducts(products, percentage) {
-    const lessSales = 50
-    let lessSellingProducts = []
+  const lessSales = 50;
+  let lessSellingProducts = [];
 
-    for (let i = 0; i < products.length; i++) {
-        if (products[i].sales < lessSales) {
-            products[i].price = Number((products[i].price - (products[i].price * percentage)).toFixed(2))
-            lessSellingProducts.push(products[i])
-        }
+  for (let i = 0; i < products.length; i++) {
+    if (products[i].sales < lessSales) {
+      products[i].price = Number(
+        (products[i].price - products[i].price * percentage).toFixed(2)
+      );
+      lessSellingProducts.push(products[i]);
     }
-    return lessSellingProducts
+  }
+  return lessSellingProducts;
 }
-console.log("20% sale on less-selling products: ", applySaleToLessSellingProducts(products, 0.2))
+console.log(
+  "20% sale on less-selling products: ",
+  applySaleToLessSellingProducts(products, 0.2)
+);
+
 // 5. Find Products in a Specific Category
 // Write a function to find products in a specific category. The function will take
 // two parameters: products and category (a string representing the category to
 // search for). The function should return an array of products in that category.
-// function findProductsInCategory(products, category) {
-//
-// }
+function findProductsInCategory(products, category) {
+  productsInCat = [];
+
+  for (let i = 0; i < products.length; i++) {
+    if (category === products[i].category) {
+      productsInCat.push(products[i]);
+    }
+  }
+  return productsInCat;
+}
+console.log(findProductsInCategory(products, "Electronics"));
+
 // 6. Find Products with Stock Less Than a Specific Quantity
 // Write a function to find products with stock less than a specific quantity. The
 // function will take two parameters: products and quantity (the stock quantity
