@@ -332,7 +332,8 @@ for (let i = 0; i < products.length; i++) {
 
 function findMostExpensiveProductInEachCategory(products) {
   const expensiveProductInCategory = {};
-  let expensive = 0;
+  let expensive = -Infinity;
+  let expensiveProductIndex = 0;
 
   for (let j = 0; j < categories.length; j++) {
     const oneCatProducts = findProductsInCategory(products, categories[j]);
@@ -340,10 +341,13 @@ function findMostExpensiveProductInEachCategory(products) {
     for (let i = 0; i < oneCatProducts.length; i++) {
       if (expensive < oneCatProducts[i].price) {
         expensive = oneCatProducts[i].price;
-        expensiveProductInCategory[categories[j]] = oneCatProducts[i];
+        expensiveProductIndex = i;
       }
     }
-    expensive = 0;
+    expensiveProductInCategory[categories[j]] =
+      oneCatProducts[expensiveProductIndex];
+    expensive = -Infinity;
+    expensiveProductIndex = 0;
   }
 
   return expensiveProductInCategory;
@@ -358,20 +362,44 @@ console.log(
 // one parameter products and return an object where each key is a category
 // and the value is an array of products in that category.
 function groupProductsByCategory(products) {
-  const groupProducts = {}
+  const groupProducts = {};
 
   for (let i = 0; i < categories.length; i++) {
-    groupProducts[categories[i]] = findProductsInCategory(products, categories[i])
+    groupProducts[categories[i]] = findProductsInCategory(
+      products,
+      categories[i]
+    );
   }
 
-  return groupProducts
+  return groupProducts;
 }
-console.log("Group products by category: ", groupProductsByCategory(products))
+console.log("Group products by category: ", groupProductsByCategory(products));
 
 // 11. Get Top N Selling Products
 // Write a function to get the top N selling products. The function will take two
 // parameters: products and n (the number of top selling products to return).
 // The function should return an array of the top N selling products.
-// function getTopNSellingProducts(products, n) {
-//
-// }
+function getTopNSellingProducts(products, n) {
+  const topSellingProducts = [];
+  let bestSellingProductIndex;
+
+  for (let i = 0; i < n; i++) {
+    let bestSelling = -Infinity;
+
+    for (let i = 0; i < products.length; i++) {
+      if (
+        products[i].sales > bestSelling &&
+        !topSellingProducts.includes(products[i])
+      ) {
+        bestSelling = products[i].sales;
+        bestSellingProductIndex = i;
+      }
+    }
+    topSellingProducts.push(products[bestSellingProductIndex]);
+  }
+  return topSellingProducts;
+}
+console.log(
+  "Top 5 best selling products: ",
+  getTopNSellingProducts(products, 5)
+);
