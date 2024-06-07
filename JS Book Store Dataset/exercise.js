@@ -256,23 +256,24 @@ const books = [
 // revenue)
 // Write a function to calculate the total revenue from all books. The function
 // should return the total revenue as a number.
-// improvise: function also return each book weekly sales and revenue.
+// improvised: function also return each book weekly sales and revenue.
 function calculateTotalRevenue(books) {
   const Revenue = [{ "Each book revenue": [] }, {}];
   let totalRevenue = 0;
   let oneBookRevenue = 0;
 
-  for (let i = 0; i < books.length; i++) {
+  for (const book of books) {
     let totalWeeklySales = 0;
     const obj = {};
 
-    for (j = 0; j < books[i].weeklySales.length; j++) {
-      totalWeeklySales += books[i].weeklySales[j].quantity;
+    for (const sales of book.weeklySales) {
+      totalWeeklySales += sales.quantity;
     }
-    oneBookRevenue = totalWeeklySales * books[i].price;
+
+    oneBookRevenue = totalWeeklySales * book.price;
     totalRevenue += oneBookRevenue;
 
-    obj.title = books[i].title;
+    obj.title = book.title;
     obj["Total weekly sales"] = totalWeeklySales;
     obj["Total revenue"] = oneBookRevenue;
     Revenue[0]["Each book revenue"].push(obj);
@@ -287,9 +288,27 @@ console.log("Total Revenue", calculateTotalRevenue(books));
 // 2. Find Revenue for Specific Date
 // Write a function to find the revenue for specific date. The function will take
 // two parameters: books and date . The function should return a number .
-// function findBooksSoldOnDate(books, date) {
-//
-// }
+// Improvised: function should also return total sales on that spacific date.
+function findBooksSoldOnDate(books, date) {
+  let revenue = 0;
+  let sales = 0;
+  const result = {}
+
+  for (const book of books) {
+    for (const sale of book.weeklySales) {
+      if (sale.date === date) {
+        revenue += sale.quantity * book.price;
+        sales += sale.quantity;
+      }
+    }
+  }
+
+  result.sales = sales
+  result.revenue = revenue
+  console.log(`On date ${date}: Sales ${result.sales}, and Revenue ${result.revenue}`)
+}
+findBooksSoldOnDate(books, "04-06-2024")
+
 // 3. Get Daily Sales Summary
 // Write a function to get a summary of daily sales across all books. The
 // function should return an object where each key is a date and the value is the
