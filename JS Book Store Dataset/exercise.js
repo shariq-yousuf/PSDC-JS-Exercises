@@ -292,7 +292,7 @@ console.log("Total Revenue", calculateTotalRevenue(books));
 function findBooksSoldOnDate(books, date) {
   let revenue = 0;
   let sales = 0;
-  const result = {}
+  const result = {};
 
   for (const book of books) {
     for (const sale of book.weeklySales) {
@@ -302,20 +302,32 @@ function findBooksSoldOnDate(books, date) {
       }
     }
   }
+  result.date = date;
+  result.sales = sales;
+  result.revenue = revenue;
 
-  result.sales = sales
-  result.revenue = revenue
-  console.log(`On date ${date}: Sales ${result.sales}, and Revenue ${result.revenue}`)
+  return result;
 }
-findBooksSoldOnDate(books, "04-06-2024")
+console.log(findBooksSoldOnDate(books, books[0].weeklySales[0].date));
 
 // 3. Get Daily Sales Summary
 // Write a function to get a summary of daily sales across all books. The
 // function should return an object where each key is a date and the value is the
 // total quantity of books sold on that date.
-// function getDailySalesSummary(books) {
-//
-// }
+function getDailySalesSummary(books) {
+  let result;
+  const summary = {}
+  const date = books[0].weeklySales[0].date
+
+  for (const arr of books[0].weeklySales) {
+    result = findBooksSoldOnDate(books, arr.date)
+    summary[arr.date] = result.sales
+  }
+
+  return summary
+}
+console.log(getDailySalesSummary(books));
+
 // 4. Find the Most and Least Sold Books on a Specific Date
 // Write a function to find the most and least sold book (books if there are more
 // than one) on a specific date. The function should take two parameters: books
