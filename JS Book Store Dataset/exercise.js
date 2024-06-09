@@ -316,15 +316,15 @@ console.log(findBooksSoldOnDate(books, books[0].weeklySales[0].date));
 // total quantity of books sold on that date.
 function getDailySalesSummary(books) {
   let result;
-  const summary = {}
-  const date = books[0].weeklySales[0].date
+  const summary = {};
+  const date = books[0].weeklySales[0].date;
 
-  for (const arr of books[0].weeklySales) {
-    result = findBooksSoldOnDate(books, arr.date)
-    summary[arr.date] = result.sales
+  for (const sales of books[0].weeklySales) {
+    result = findBooksSoldOnDate(books, sales.date);
+    summary[sales.date] = result.sales;
   }
 
-  return summary
+  return summary;
 }
 console.log(getDailySalesSummary(books));
 
@@ -338,10 +338,37 @@ console.log(getDailySalesSummary(books));
 // mostSoldBook: [],
 // mostSoldBook: [],
 // }
-// PSDC Book Store Dataset 9
-// function findMostAndLeastSoldBooksOnDate(books, date) {
-//
-// }
+function findMostAndLeastSoldBooksOnDate(books, date) {
+  const result = {};
+  let mostSales = -Infinity;
+  let leastSales = Infinity;
+
+  for (const book of books) {
+    for (const sales of book.weeklySales) {
+      if (sales.date === date) {
+        result.date = date;
+
+        if (sales.quantity > mostSales) {
+          mostSales = sales.quantity;
+          result.mostSoldBook = book.title;
+        }
+
+        if (sales.quantity < 2) {
+          continue;
+        } else {
+          if (sales.quantity < leastSales) {
+            leastSales = sales.quantity;
+            result.leastSoldBook = book.title;
+          }
+        }
+      }
+    }
+  }
+
+  return result;
+}
+console.log(findMostAndLeastSoldBooksOnDate(books, "01-06-2024"));
+
 // 5. Calculate Daily Average Sales for Each Book
 // Write a function to calculate the daily average sales for each book. The
 // function should take one parameter: books . It should return an array of
